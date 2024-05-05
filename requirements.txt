@@ -3,3 +3,9 @@ pandas
 plotly
 streamlit
 yfinance
+matplotlib
+scikit-learn
+keras
+joblib
+xgboost
+statsmodels
