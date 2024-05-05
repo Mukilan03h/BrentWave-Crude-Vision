@@ -1,10 +1,5 @@
+numpy
+pandas
+plotly
 streamlit
 yfinance
-pandas
-numpy
-matplotlib
-scikit-learn
-keras
-joblib
-xgboost
-statsmodels
