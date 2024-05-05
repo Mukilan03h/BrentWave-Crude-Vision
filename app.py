@@ -42,7 +42,7 @@ import os
 
 # Display title and image
 st.title("Brent Crude Oil Price Prediction")
-st.image("E:\\stock-prediction-master\\download.jpeg", caption="Brent Crude Oil", use_column_width=True)
+st.image("download.jpeg", caption="Brent Crude Oil", use_column_width=True)
 
 # Define the usage documentation in Markdown format
 usage_documentation = """
