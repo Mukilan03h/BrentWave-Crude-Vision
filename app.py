@@ -143,15 +143,17 @@ def evaluate_model_svr(y_true, y_pred):
     r2 = r2_score(y_true, y_pred)
     return mse, rmse, mae, r2
 
-def plot_predictions(predictions):
-    # Plot the predictions
+def plot_future_predictions(predictions, data):
+    # Plot the future predictions
+    future_dates = pd.date_range(start=data.index[-1], periods=len(predictions)+1, closed='right')[1:]
     plt.figure(figsize=(10, 6))
-    plt.plot(predictions, label="Predicted Prices")
-    plt.xlabel("Days")
+    plt.plot(future_dates, predictions, label="Future Predictions")
+    plt.xlabel("Date")
     plt.ylabel("Price (USD)")
-    plt.title("Brent Crude Oil Price Prediction")
+    plt.title("Future Price Predictions")
     plt.legend()
     st.pyplot()
+
 
 def plot_future_predictions(predictions, data):
     # Plot the future predictions
