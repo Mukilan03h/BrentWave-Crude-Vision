@@ -3,12 +3,12 @@ from io import BytesIO
 import os
 
 # Display title and image
-st.title("Brent Crude Oil Price Prediction")
+st.title("BrentWave Crude Vision - Future Prediction")
 st.image("download.jpeg", caption="Brent Crude Oil", use_column_width=True)
 
 # Define the usage documentation in Markdown format
 usage_documentation = """
-## Welcome to Brent Crude Oil Price Prediction App!
+## Welcome to BrentWave Crude Vision App!
 
 This app allows you to predict the future prices of Brent Crude Oil using various machine learning models.
 
@@ -178,7 +178,7 @@ def main():
     st.write(data.tail())
 
     # Model selection
-    selected_model = st.selectbox("Select Model", ["LSTM", "GBR", "XGBoost", "SVR (Recommended)", "ARIMA"])
+    selected_model = st.selectbox("Select Model", ["LSTM", "XGBoost", "SVR (Recommended)", "ARIMA"])
 
     # Split data into features and target
     X = data[['Open', 'High', 'Low', 'Volume', 'MA10', 'MA50', 'MA100']]
