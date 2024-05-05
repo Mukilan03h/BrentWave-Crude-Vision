@@ -59,11 +59,11 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 # Load models
-model_lstm = load_model("E:\\stock-prediction-master\\model_lstm.h5")
-model_gbr = joblib.load("E:\\stock-prediction-master\\model_gbr.pkl")
-model_xgb = xgb.Booster(model_file="E:\\stock-prediction-master\\model_xgb.json")
-model_arima = joblib.load("E:\\stock-prediction-master\\model_arima.pkl")
-model_svr = joblib.load("E:\\stock-prediction-master\\model_svr.pkl")  # Load SVR model
+model_lstm = load_model("model_lstm.h5")
+model_gbr = joblib.load("model_gbr.pkl")
+model_xgb = xgb.Booster(model_file="model_xgb.json")
+model_arima = joblib.load("model_arima.pkl")
+model_svr = joblib.load("model_svr.pkl")  # Load SVR model
 
 def scrape_data():
     # Scrape Brent Crude Oil data from Yahoo Finance
