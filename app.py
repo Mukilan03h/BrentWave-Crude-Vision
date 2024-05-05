@@ -36,6 +36,44 @@ if st.button("Download Usage Documentation"):
     st.download_button(label="Download", data=docx_data, file_name="usage_documentation.docx", mime="application/octet-stream")
 
 
+import streamlit as st
+from io import BytesIO
+import os
+
+# Display title and image
+st.title("Brent Crude Oil Price Prediction")
+st.image("E:\\stock-prediction-master\\download.jpeg", caption="Brent Crude Oil", use_column_width=True)
+
+# Define the usage documentation in Markdown format
+usage_documentation = """
+## Welcome to Brent Crude Oil Price Prediction App!
+
+This app allows you to predict the future prices of Brent Crude Oil using various machine learning models.
+
+### How to Use:
+1. **Select Model:** Choose one of the available models from the dropdown menu.
+2. **Adjust Future Days:** Use the slider to select the number of future days for which you want predictions.
+3. **View Predictions:** Once you select a model and adjust the future days, the app will display the predicted prices and future predictions.
+
+Feel free to explore and analyze the data!
+
+---
+
+"""
+
+# Provide a button to download usage documentation as a Word document
+def download_documentation(usage_documentation, filename="E:\\stock-prediction-master\\Brent Crude Oil Price Prediction App.docx"):
+    byte_data = BytesIO()
+    os.system(f"pandoc -s -o {filename} -f markdown -t docx <(echo '{usage_documentation}')")
+    with open(filename, "rb") as file:
+        byte_data.write(file.read())
+    return byte_data.getvalue()
+
+if st.button("Download Usage Documentation"):
+    docx_data = download_documentation(usage_documentation)
+    st.download_button(label="Download", data=docx_data, file_name="usage_documentation.docx", mime="application/octet-stream")
+
+
 
 
 
@@ -143,17 +181,15 @@ def evaluate_model_svr(y_true, y_pred):
     r2 = r2_score(y_true, y_pred)
     return mse, rmse, mae, r2
 
-def plot_future_predictions(predictions, data):
-    # Plot the future predictions
-    future_dates = pd.date_range(start=data.index[-1], periods=len(predictions)+1, closed='right')[1:]
+def plot_predictions(predictions):
+    # Plot the predictions
     plt.figure(figsize=(10, 6))
-    plt.plot(future_dates, predictions, label="Future Predictions")
-    plt.xlabel("Date")
+    plt.plot(predictions, label="Predicted Prices")
+    plt.xlabel("Days")
     plt.ylabel("Price (USD)")
-    plt.title("Future Price Predictions")
+    plt.title("Brent Crude Oil Price Prediction")
     plt.legend()
     st.pyplot()
-
 
 def plot_future_predictions(predictions, data):
     # Plot the future predictions
@@ -180,7 +216,7 @@ def main():
     st.write(data.tail())
 
     # Model selection
-    selected_model = st.selectbox("Select Model", ["LSTM", "XGBoost", "SVR (Recommended)", "ARIMA"])
+    selected_model = st.selectbox("Select Model", ["LSTM", "GBR", "XGBoost", "SVR (Recommended)", "ARIMA"])
 
     # Split data into features and target
     X = data[['Open', 'High', 'Low', 'Volume', 'MA10', 'MA50', 'MA100']]
