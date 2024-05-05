@@ -4,7 +4,7 @@ import os
 
 # Display title and image
 st.title("Brent Crude Oil Price Prediction")
-st.image("E:\\stock-prediction-master\\download.jpeg", caption="Brent Crude Oil", use_column_width=True)
+st.image("download.jpeg", caption="Brent Crude Oil", use_column_width=True)
 
 # Define the usage documentation in Markdown format
 usage_documentation = """
@@ -24,7 +24,7 @@ Feel free to explore and analyze the data!
 """
 
 # Provide a button to download usage documentation as a Word document
-def download_documentation(usage_documentation, filename="E:\\stock-prediction-master\\Brent Crude Oil Price Prediction App.docx"):
+def download_documentation(usage_documentation, filename="Brent Crude Oil Price Prediction App.docx"):
     byte_data = BytesIO()
     os.system(f"pandoc -s -o {filename} -f markdown -t docx <(echo '{usage_documentation}')")
     with open(filename, "rb") as file:
@@ -60,11 +60,11 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 # Load models
-model_lstm = load_model("E:\\stock-prediction-master\\model_lstm.h5")
-model_gbr = joblib.load("E:\\stock-prediction-master\\model_gbr.pkl")
-model_xgb = xgb.Booster(model_file="E:\\stock-prediction-master\\model_xgb.json")
-model_arima = joblib.load("E:\\stock-prediction-master\\model_arima.pkl")
-model_svr = joblib.load("E:\\stock-prediction-master\\model_svr.pkl")  # Load SVR model
+model_lstm = load_model("model_lstm.h5")
+model_gbr = joblib.load("model_gbr.pkl")
+model_xgb = xgb.Booster(model_file="model_xgb.json")
+model_arima = joblib.load("model_arima.pkl")
+model_svr = joblib.load("model_svr.pkl")  # Load SVR model
 
 def scrape_data():
     # Scrape Brent Crude Oil data from Yahoo Finance
