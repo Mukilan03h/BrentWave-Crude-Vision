@@ -228,3 +228,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+st.write("'### Disclaimer:
+The predictions provided by this app are for educational and informational purposes only. They should not be considered as financial advice or used for making investment decisions. The future performance of the Brent Crude Oil market cannot be guaranteed, and predictions may not always be accurate. Users are advised to use the information provided by this app wisely and to conduct their own research before making any financial decisions.
+"')
